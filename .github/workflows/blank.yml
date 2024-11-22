@@ -13,4 +13,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Run a one-line script
-        run: tar -cvf archive.tar /cours-qualite-2024
+        run: tar -cvf archive.tar ./
