@@ -45,15 +45,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>createThriftDir</id>
                         <phase>test</phase>
                         <configuration>
-                            <tasks>
-                                <delete dir="${env.HOME}/jacoco"/>
-                                <mkdir dir="${env.HOME}/jacoco"/>
-                            </tasks>
+                            <target>
+                                <ant>
+                                    <delete dir="${env.HOME}/jacoco"/>
+                                    <mkdir dir="${env.HOME}/jacoco"/>
+                                </ant>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>
@@ -68,7 +71,7 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.8</version>
                 <configuration>
-                    <outputDirectory>${env.HOME}/jacoco</outputDirectory>
+                    <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
                     <append>true</append>
                 </configuration>
                 <executions>
@@ -114,6 +117,11 @@
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>fr.imt.cours.IL-Maven-2023</groupId>
+            <artifactId>storage</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- JUnit 5 dependency -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>

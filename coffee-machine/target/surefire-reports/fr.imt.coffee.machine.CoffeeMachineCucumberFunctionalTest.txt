@@ -1,0 +1,32 @@
+-------------------------------------------------------------------------------
+Test set: fr.imt.coffee.machine.CoffeeMachineCucumberFunctionalTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 2, Errors: 1, Skipped: 0, Time elapsed: 61.104 s <<< FAILURE! - in fr.imt.coffee.machine.CoffeeMachineCucumberFunctionalTest
+Make a coffee with a complete coffee machine.A user plug the coffee machine and make a coffee Arabica  Time elapsed: 18.683 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertFalse.failNotFalse(AssertFalse.java:63)
+	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:36)
+	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:31)
+	at org.junit.jupiter.api.Assertions.assertFalse(Assertions.java:228)
+	at fr.imt.coffee.machine.cucumber.steps.CucumberStepsCoffeeMachineMakeACoffeeTest.theCoffeeMachineReturnACoffeeMugNotEmpty(CucumberStepsCoffeeMachineMakeACoffeeTest.java:85)
+	at ✽.the coffee machine return a coffee mug not empty(classpath:functional/features//make_a_coffee.feature:10)
+
+Make a coffee with a complete coffee machine.A user plug the coffee machine and make a coffee  Time elapsed: 9.298 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertFalse.failNotFalse(AssertFalse.java:63)
+	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:36)
+	at org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:31)
+	at org.junit.jupiter.api.Assertions.assertFalse(Assertions.java:228)
+	at fr.imt.coffee.machine.cucumber.steps.CucumberStepsCoffeeMachineMakeACoffeeTest.theCoffeeMachineReturnACoffeeMugNotEmpty(CucumberStepsCoffeeMachineMakeACoffeeTest.java:85)
+	at ✽.the coffee machine return a coffee mug not empty(classpath:functional/features//make_a_coffee.feature:22)
+
+Make a coffee with a complete coffee machine.A user plugs the coffee machine and makes a coffee but it's out of order  Time elapsed: 0.032 s  <<< ERROR!
+fr.imt.coffee.machine.exception.CoffeeTypeCupDifferentOfCoffeeTypeTankException: The type of coffee to be made in the cup is different from that in the tank.
+	at fr.imt.coffee.machine.CoffeeMachine.makeACoffee(CoffeeMachine.java:99)
+	at fr.imt.coffee.machine.cucumber.steps.CucumberStepsCoffeeMachineMakeACoffeeTest.machineOutOfOrder(CucumberStepsCoffeeMachineMakeACoffeeTest.java:116)
+	at ✽.nothing is returned(classpath:functional/features//make_a_coffee.feature:41)
+

@@ -34,6 +34,12 @@ public class CucumberStepsCoffeeMachineMakeACoffeeTest {
         coffeeMachine = new CoffeeMachine(minimalWaterCapacity, maximalWaterCapacity, minimalWaterCapacity, maximalWaterCapacity, pumpWaterFlow);
     }
 
+    @Given("a coffee machine with {double} l of min capacity, {double} l of max capacity, {double} l per h of water flow for the pump that is out of order")
+    public void givenACoffeeMachineOutOfOrder(double minimalWaterCapacity, double maximalWaterCapacity, double pumpWaterFlow){
+        coffeeMachine = new CoffeeMachine(minimalWaterCapacity, maximalWaterCapacity, minimalWaterCapacity, maximalWaterCapacity, pumpWaterFlow);
+        coffeeMachine.setOutOfOrder(true);
+    }
+
     @And("a {string} with a capacity of {double}")
     public void aWithACapacityOf(String containerType, double containerCapacity) {
         if ("mug".equals(containerType))
@@ -93,6 +99,22 @@ public class CucumberStepsCoffeeMachineMakeACoffeeTest {
             assertThat(containerWithCoffee, instanceOf(CoffeeCup.class));
 
         assertThat(containerWithCoffee.getCoffeeType(), is(CoffeeType.valueOf(coffeeType)));
+    }
+
+    @Then("the coffee machine is plugged")
+    public void theCoffeMachineIsPlugged(){
+        Assertions.assertTrue(coffeeMachine.isPlugged());
+    }
+
+    @And("the coffee machine water tank contains {double} l of water")
+    public void theCoffeMachineContainsWater(double waterAdded){
+        Assertions.assertEquals(waterAdded, coffeeMachine.getWaterTank().getActualVolume());
+    }
+
+    @Then("nothing is returned")
+    public void machineOutOfOrder() throws InterruptedException, CupNotEmptyException, LackOfWaterInTankException, MachineNotPluggedException, CoffeeTypeCupDifferentOfCoffeeTypeTankException, CannotMakeCremaWithSimpleCoffeeMachine, fr.imt.coffee.machine.exception.CoffeeTypeCupDifferentOfCoffeeTypeTankException, fr.imt.coffee.machine.exception.LackOfWaterInTankException, fr.imt.coffee.machine.exception.MachineNotPluggedException {
+        containerWithCoffee = coffeeMachine.makeACoffee(cup, CoffeeType.ARABICA_CREMA);
+        Assertions.assertNull(containerWithCoffee);
     }
 
 
